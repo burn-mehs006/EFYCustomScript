@@ -27,6 +27,7 @@ function videoSkip() {
     document.addEventListener('mousedown', function (e) {
         const btn = e.target.closest('#efyt-custom-script');
         if (!btn) {
+            console.log("not found");
             return;
         }
 
