@@ -46,6 +46,7 @@ function videoSkip() {
         } else if (e.button === 4) {
             time = 5;
         }
+        console.log("e.button:", e.button, " time:", time);
         player.currentTime += time;
     });
 }
