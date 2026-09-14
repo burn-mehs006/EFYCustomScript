@@ -19,6 +19,15 @@
         console.log("Video title:", el.innerText);
 
         videoSkip();
+
+        function xxx() {
+            const video = document.querySelector("#movie_player > div.html5-video-container > video");
+
+            console.log("wheel playbackRate:", video.playbackRate);
+        }
+
+        let D = document.querySelector("#player-container.ytd-watch-flexy, #player-container.ytd-watch-grid");
+        D.addEventListener("wheel", xxx, !0);
     });
 })();
 
@@ -27,7 +36,6 @@ function videoSkip() {
     document.addEventListener('mousedown', function (e) {
         const btn = e.target.closest('#efyt-custom-script');
         if (!btn) {
-            console.log("not found");
             return;
         }
 
