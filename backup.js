@@ -1,3 +1,6 @@
+/**
+// 20260914 Enhancer for YouTubeのカスタムスクリプトに書いていたいコード
+*/
 document.addEventListener('mousedown', function (e) {
     const btn = e.target.closest('#efyt-custom-script');
     if (!btn) {
@@ -37,3 +40,52 @@ const sleep = (time) => new Promise((r) => setTimeout(r, time));
         ytpTimeDuration.after(timeA);
     }
 }());
+
+
+
+
+(async () => {
+    const SCRIPT_URL = `https://raw.githubusercontent.com/burn-mehs006/EFYCustomScript/main/play_speed.js?t=${Date.now()}`;
+
+    // // 二重実行防止
+    // if (window.__myCustomScriptLoaded) {
+    //     return;
+    // } else {
+    //     window.__myCustomScriptLoaded = true;
+    // }
+
+    try {
+        const res = await fetch(SCRIPT_URL, { cache: 'no-store' }); // キャッシュ回避
+        if (!res.ok) {
+            throw new Error(`HTTP ${res.status}`);
+        }
+
+        // script取得
+        const code = await res.text();
+        // Trusted Types 対応
+        if (window.trustedTypes && trustedTypes.createPolicy) {
+            try {
+                const policy = trustedTypes.defaultPolicy || trustedTypes.createPolicy('default', {
+                    createScript: (s) => s,
+                    createScriptURL: (u) => u,
+                    createHTML: (h) => h
+                });
+                // createScript が使える場合
+                if (policy.createScript) {
+                    eval(policy.createScript(code));
+                } else {
+                    eval(code);
+                }
+            } catch (e) {
+                console.warn('[Custom] TrustedTypes失敗、直接evalします', e);
+                eval(code);
+            }
+        } else {
+            eval(code);
+        }
+
+        console.log('[Custom] スクリプト実行完了');
+    } catch (e) {
+        console.error('[Custom] 失敗:', e);
+    }
+})();
