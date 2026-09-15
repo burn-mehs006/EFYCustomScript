@@ -58,24 +58,29 @@ function playSpeed() {
 
         if (ytpTimeCurrent) {
             const observer = new MutationObserver(() => {
-                
 
-                //総再生時間が変更されました: 1:00:13
-                const ytpTimeCurrents = ytpTimeCurrent.textContent.split(':');
-                const divides = [1, 60, 3600];
-                let divideIndex = 0;
-                let seconds = 0;
-                for (let index = ytpTimeCurrents.lenght - 1; index >= 0; index--) {
 
-                    if(index === ytpTimeCurrents.lenght - 1){
-                        seconds = ytpTimeCurrents[index] - 0;
-                    }else{
-                        seconds += (ytpTimeCurrents[index] - 0) * divides[divideIndex];
-                    }
-                    divideIndex++;
-                }
+                // //総再生時間が変更されました: 1:00:13
+                // const ytpTimeCurrents = ytpTimeCurrent.textContent.split(':');
+                // console.log("ytpTimeCurrents:", ytpTimeCurrents);
 
-                console.log('総再生時間が変更されました:', ytpTimeCurrent.textContent,  " seconds:", seconds);
+                // const divides = [1, 60, 3600];
+                // let divideIndex = 0;
+                // let seconds = 0;
+                // for (let index = ytpTimeCurrents.lenght - 1; index >= 0; index--) {
+
+                //     if(index === ytpTimeCurrents.lenght - 1){
+                //         seconds = ytpTimeCurrents[index] - 0;
+                //     }else{
+                //         seconds += (ytpTimeCurrents[index] - 0) * divides[divideIndex];
+                //     }
+                //     divideIndex++;
+                // }
+
+                // console.log('総再生時間が変更されました:', ytpTimeCurrent.textContent,  " seconds:", seconds);
+
+                const player = document.querySelector('video');
+                console.log("seconds:", player.currentTime);
             });
 
             observer.observe(ytpTimeCurrent, {
