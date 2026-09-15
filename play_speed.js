@@ -25,14 +25,6 @@
 })();
 
 function playSpeed() {
-    function xxx() {
-        //const video = document.querySelector("#movie_player > div.html5-video-container > video");
-        const player = document.querySelector('video');
-
-
-
-        console.log('wheel playbackRate:', player.playbackRate, " duration:", player.duration, " currentTime:", player.currentTime);
-    }
 
     const d = document.querySelector('#player-container.ytd-watch-flexy, #player-container.ytd-watch-grid');
     d.addEventListener("wheel", xxx, !0);
@@ -55,14 +47,28 @@ function playSpeed() {
     const ytpTimeBracketEndAtSpeed = document.createElement("span");
 
     ytpTimeBracketBeginAtSpeed.textContent = '(';
+    ytpTimeBracketBeginAtSpeed.classList = 'ytp-time-bracketBeginAtSpeed';
     ytpTimeDuration.after(ytpTimeBracketBeginAtSpeed);
 
-    ytpTimeDurationAtSpeed.textContent = "ABCDEFG";
-    ytpTimeBracketBeginAtSpeed.after(ytpTimeDurationAtSpeed);
+    {
+        const player = document.querySelector('video');
+        ytpTimeDurationAtSpeed.textContent = Math.floor(player.duration) / 60 + ":" + Math.floor(player.duration) % 60;
+        ytpTimeDurationAtSpeed.classList = 'ytp-time-durationAtSpeed';
+        ytpTimeBracketBeginAtSpeed.after(ytpTimeDurationAtSpeed);
+    }
 
     ytpTimeBracketEndAtSpeed.textContent = ')';
+    ytpTimeBracketEndAtSpeed.classList = 'ytp-time-bracketEndAtSpeed';
     ytpTimeDurationAtSpeed.after(ytpTimeBracketEndAtSpeed);
 
+    function xxx() {
+        //const video = document.querySelector("#movie_player > div.html5-video-container > video");
+        const player = document.querySelector('video');
+        console.log('wheel playbackRate:', player.playbackRate, " duration:", player.duration, " currentTime:", player.currentTime);
+
+        const aaa = player.duration / player.playbackRate;
+        ytpTimeDurationAtSpeed.textContent = Math.floor(aaa) / 60 + ":" + Math.floor(aaa) % 60;
+    }
 }
 
 function videoSkip() {
