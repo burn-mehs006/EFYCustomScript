@@ -77,7 +77,7 @@ function playSpeed() {
     }
 
     {
-        ytpTimeSeparatorAtSpeed.textContent = ' / ';
+        ytpTimeSeparatorAtSpeed.textContent = '/';
         ytpTimeSeparatorAtSpeed.classList = 'ytp-time-SeparatorAtSpeed';
         ytpTimeCurrentAtSpeed.after(ytpTimeSeparatorAtSpeed);
     }
