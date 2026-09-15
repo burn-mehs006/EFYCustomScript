@@ -50,7 +50,7 @@ function playSpeed() {
     const ytpTimeBracketEndAtSpeed = document.createElement("span");
 
     {
-        ytpTimeBracketBeginAtSpeed.textContent = '　(';
+        ytpTimeBracketBeginAtSpeed.textContent = ' (';
         ytpTimeBracketBeginAtSpeed.classList = 'ytp-time-bracketBeginAtSpeed';
         ytpTimeDuration.after(ytpTimeBracketBeginAtSpeed);
     }
