@@ -48,39 +48,19 @@ function playSpeed() {
     const ytpTimeDurationAtSpeed = document.createElement("span");
     const ytpTimeBracketEndAtSpeed = document.createElement("span");
 
-    ytpTimeBracketBeginAtSpeed.textContent = '(';
-    ytpTimeBracketBeginAtSpeed.classList = 'ytp-time-bracketBeginAtSpeed';
-
-    ytpTimeDuration.after(ytpTimeBracketBeginAtSpeed);
+    {
+        ytpTimeBracketBeginAtSpeed.textContent = '(';
+        ytpTimeBracketBeginAtSpeed.classList = 'ytp-time-bracketBeginAtSpeed';
+        ytpTimeDuration.after(ytpTimeBracketBeginAtSpeed);
+    }
 
     {
         const ytpTimeCurrent = document.querySelector('.ytp-time-current');
-
         if (ytpTimeCurrent) {
             const observer = new MutationObserver(() => {
-
-
-                // //総再生時間が変更されました: 1:00:13
-                // const ytpTimeCurrents = ytpTimeCurrent.textContent.split(':');
-                // console.log("ytpTimeCurrents:", ytpTimeCurrents);
-
-                // const divides = [1, 60, 3600];
-                // let divideIndex = 0;
-                // let seconds = 0;
-                // for (let index = ytpTimeCurrents.lenght - 1; index >= 0; index--) {
-
-                //     if(index === ytpTimeCurrents.lenght - 1){
-                //         seconds = ytpTimeCurrents[index] - 0;
-                //     }else{
-                //         seconds += (ytpTimeCurrents[index] - 0) * divides[divideIndex];
-                //     }
-                //     divideIndex++;
-                // }
-
-                // console.log('総再生時間が変更されました:', ytpTimeCurrent.textContent,  " seconds:", seconds);
-
                 const player = document.querySelector('video');
-                console.log("seconds:", player.currentTime);
+                const currentTimeAtSpeed = player.currentTime / player.playbackRate;
+                ytpTimeCurrentAtSpeed.textContent = Math.floor(currentTimeAtSpeed / 60) + ":" + Math.floor(currentTimeAtSpeed % 60).toString().padStart(2, '0');
             });
 
             observer.observe(ytpTimeCurrent, {
@@ -89,18 +69,27 @@ function playSpeed() {
                 subtree: true
             });
         }
+        ytpTimeCurrentAtSpeed.classList = 'ytp-time-CurrentAtSpeed';
+        ytpTimeBracketBeginAtSpeed.after(ytpTimeCurrentAtSpeed);
+    }
+
+    {
+        ytpTimeSeparatorAtSpeed.textContent = '/';
+        ytpTimeSeparatorAtSpeed.classList = 'ytp-time-SeparatorAtSpeed';
+        ytpTimeCurrentAtSpeed.after(ytpTimeSeparatorAtSpeed);
     }
 
     {
         ytpTimeDurationAtSpeed.textContent = document.querySelector('span.ytp-time-duration').textContent;
         ytpTimeDurationAtSpeed.classList = 'ytp-time-durationAtSpeed';
-        ytpTimeBracketBeginAtSpeed.after(ytpTimeDurationAtSpeed);
+        ytpTimeSeparatorAtSpeed.after(ytpTimeDurationAtSpeed);
     }
 
-    ytpTimeBracketEndAtSpeed.textContent = ')';
-    ytpTimeBracketEndAtSpeed.classList = 'ytp-time-bracketEndAtSpeed';
-    ytpTimeDurationAtSpeed.after(ytpTimeBracketEndAtSpeed);
-
+    {
+        ytpTimeBracketEndAtSpeed.textContent = ')';
+        ytpTimeBracketEndAtSpeed.classList = 'ytp-time-bracketEndAtSpeed';
+        ytpTimeDurationAtSpeed.after(ytpTimeBracketEndAtSpeed);
+    }
 
     function speedWheel() {
         //const video = document.querySelector("#movie_player > div.html5-video-container > video");
