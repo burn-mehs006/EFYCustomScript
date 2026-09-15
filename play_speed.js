@@ -16,7 +16,7 @@
 
     // 例：動画タイトルを取得してログに出す
     //#movie_player > div.ytp-chrome-bottom > div.ytp-chrome-controls > div.ytp-left-controls > div.ytp-time-display.notranslate > div > div > 
-    wait('span.ytp-time-duration').then(el => {
+    wait('video').then(el => {
         console.log("Video title:", el.innerText);
 
         videoSkip();
