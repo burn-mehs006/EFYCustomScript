@@ -28,7 +28,8 @@
 function playSpeed() {
 
     const d = document.querySelector('#player-container.ytd-watch-flexy, #player-container.ytd-watch-grid');
-    d.addEventListener("wheel", xxx, !0);
+    d.addEventListener("wheel", speedWheel);
+    d.addEventListener("click", speedClick);
 
     // element span / class name
     // ytp-time-current
@@ -65,10 +66,17 @@ function playSpeed() {
     ytpTimeBracketEndAtSpeed.classList = 'ytp-time-bracketEndAtSpeed';
     ytpTimeDurationAtSpeed.after(ytpTimeBracketEndAtSpeed);
 
-    function xxx() {
+    function speedWheel() {
         //const video = document.querySelector("#movie_player > div.html5-video-container > video");
         const player = document.querySelector('video');
         console.log('B wheel playbackRate:', player.playbackRate, " duration:", player.duration, " currentTime:", player.currentTime);
+
+        const durationAtSpeed = player.duration / player.playbackRate;
+        ytpTimeDurationAtSpeed.textContent = Math.floor(durationAtSpeed / 60) + ":" + Math.floor(durationAtSpeed % 60).toString().padStart(2, '0');
+    }
+
+    function speedClick() {
+        const player = document.querySelector('video');
 
         const durationAtSpeed = player.duration / player.playbackRate;
         ytpTimeDurationAtSpeed.textContent = Math.floor(durationAtSpeed / 60) + ":" + Math.floor(durationAtSpeed % 60).toString().padStart(2, '0');
