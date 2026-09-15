@@ -70,8 +70,8 @@ function playSpeed() {
         const player = document.querySelector('video');
         console.log('B wheel playbackRate:', player.playbackRate, " duration:", player.duration, " currentTime:", player.currentTime);
 
-        const aaa = player.duration / player.playbackRate;
-        ytpTimeDurationAtSpeed.textContent = Math.floor(aaa / 60) + ":" + Math.floor(aaa % 60);
+        const durationAtSpeed = player.duration / player.playbackRate;
+        ytpTimeDurationAtSpeed.textContent = Math.floor(durationAtSpeed / 60) + ":" + Math.floor(durationAtSpeed % 60).toString().padStart(2, '0');
     }
 }
 
