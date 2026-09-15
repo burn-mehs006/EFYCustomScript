@@ -28,7 +28,7 @@
 function playSpeed() {
 
     const d = document.querySelector('#player-container.ytd-watch-flexy, #player-container.ytd-watch-grid');
-    d.addEventListener("wheel", speedWheel);
+    d.addEventListener("wheel", speedWheel, true);
     d.addEventListener("click", speedClick);
 
     // element span / class name
