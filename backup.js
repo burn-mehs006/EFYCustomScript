@@ -41,18 +41,18 @@ const sleep = (time) => new Promise((r) => setTimeout(r, time));
     }
 }());
 
-
-
-
 (async () => {
+    console.log('[Custom] スクリプト実行開始');
+
     const SCRIPT_URL = `https://raw.githubusercontent.com/burn-mehs006/EFYCustomScript/main/play_speed.js?t=${Date.now()}`;
 
-    // // 二重実行防止
-    // if (window.__myCustomScriptLoaded) {
-    //     return;
-    // } else {
-    //     window.__myCustomScriptLoaded = true;
-    // }
+    // 二重実行防止
+    if (window.__myCustomScriptLoaded) {
+        console.log('[Custom] スクリプト実行済み');
+        return;
+    } else {
+        window.__myCustomScriptLoaded = true;
+    }
 
     try {
         const res = await fetch(SCRIPT_URL, { cache: 'no-store' }); // キャッシュ回避
@@ -89,3 +89,13 @@ const sleep = (time) => new Promise((r) => setTimeout(r, time));
         console.error('[Custom] 失敗:', e);
     }
 })();
+
+
+
+// D = document.querySelector("#player-container.ytd-watch-flexy, #player-container.ytd-watch-grid");
+// D.addEventListener("wheel", xxx, !0);
+
+
+// function xxx(){
+//     console.log("wheel", );
+// }

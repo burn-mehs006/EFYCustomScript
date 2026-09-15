@@ -45,23 +45,24 @@ function playSpeed() {
     const ytpTimeDuration = document.querySelector(".ytp-time-duration");
     if (!ytpTimeDuration) {
         console.error("not found ytpTimeDuration element");
+        return;
     }
-    else {
-        const ytpTimeBracketBeginAtSpeed = document.createElement("span");
-        const ytpTimeCurrentAtSpeed = document.createElement("span");
-        const ytpTimeSeparatorSpeed = document.createElement("span");
-        const ytpTimeDurationAtSpeed = document.createElement("span");
-        const ytpTimeBracketEndAtSpeed = document.createElement("span");
 
-        ytpTimeBracketBeginAtSpeed.textContent = '(';
-        ytpTimeDuration.after(ytpTimeBracketBeginAtSpeed);
+    const ytpTimeBracketBeginAtSpeed = document.createElement("span");
+    const ytpTimeCurrentAtSpeed = document.createElement("span");
+    const ytpTimeSeparatorAtSpeed = document.createElement("span");
+    const ytpTimeDurationAtSpeed = document.createElement("span");
+    const ytpTimeBracketEndAtSpeed = document.createElement("span");
 
-        ytpTimeDurationAtSpeed.textContent = "ABCDEFG";
-        ytpTimeBracketBeginAtSpeed.after(ytpTimeDuration);
+    ytpTimeBracketBeginAtSpeed.textContent = '(';
+    ytpTimeDuration.after(ytpTimeBracketBeginAtSpeed);
 
-        ytpTimeBracketEndAtSpeed.textContent = ')';
-        ytpTimeDurationAtSpeed.after(ytpTimeDuration);
-    }
+    ytpTimeDurationAtSpeed.textContent = "ABCDEFG";
+    ytpTimeBracketBeginAtSpeed.after(ytpTimeDurationAtSpeed);
+
+    ytpTimeBracketEndAtSpeed.textContent = ')';
+    ytpTimeDurationAtSpeed.after(ytpTimeBracketEndAtSpeed);
+
 }
 
 function videoSkip() {
