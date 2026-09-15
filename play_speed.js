@@ -44,12 +44,23 @@ function playSpeed() {
 
     const ytpTimeDuration = document.querySelector(".ytp-time-duration");
     if (!ytpTimeDuration) {
-        console.error("erro ytpTimeDuration ");
+        console.error("not found ytpTimeDuration element");
     }
     else {
-        const timeA = document.createElement("span");
-        timeA.textContent = "ABCDEFG";
-        ytpTimeDuration.after(timeA);
+        const ytpTimeBracketBeginAtSpeed = document.createElement("span");
+        const ytpTimeCurrentAtSpeed = document.createElement("span");
+        const ytpTimeSeparatorSpeed = document.createElement("span");
+        const ytpTimeDurationAtSpeed = document.createElement("span");
+        const ytpTimeBracketEndAtSpeed = document.createElement("span");
+
+        ytpTimeBracketBeginAtSpeed.textContent = '(';
+        ytpTimeDuration.after(ytpTimeBracketBeginAtSpeed);
+
+        ytpTimeDurationAtSpeed.textContent = "ABCDEFG";
+        ytpTimeBracketBeginAtSpeed.after(ytpTimeDuration);
+
+        ytpTimeBracketEndAtSpeed.textContent = ')';
+        ytpTimeDurationAtSpeed.after(ytpTimeDuration);
     }
 }
 
