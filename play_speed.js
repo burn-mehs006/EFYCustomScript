@@ -20,17 +20,38 @@
 
         videoSkip();
 
-        function xxx() {
-            const video = document.querySelector("#movie_player > div.html5-video-container > video");
-
-            console.log("wheel playbackRate:", video.playbackRate);
-        }
-
-        let D = document.querySelector("#player-container.ytd-watch-flexy, #player-container.ytd-watch-grid");
-        D.addEventListener("wheel", xxx, !0);
+        playSpeed();
     });
 })();
 
+function playSpeed() {
+    function xxx() {
+        //const video = document.querySelector("#movie_player > div.html5-video-container > video");
+        const player = document.querySelector('video');
+
+
+
+        console.log('wheel playbackRate:', player.playbackRate, " duration:", player.duration, " currentTime:", player.currentTime);
+    }
+
+    const d = document.querySelector('#player-container.ytd-watch-flexy, #player-container.ytd-watch-grid');
+    d.addEventListener("wheel", xxx, !0);
+
+    // element span / class name
+    // ytp-time-current
+    // ytp-time-separator
+    // ytp-time-duration
+
+    const ytpTimeDuration = document.querySelector(".ytp-time-duration");
+    if (!ytpTimeDuration) {
+        console.error("erro ytpTimeDuration ");
+    }
+    else {
+        const timeA = document.createElement("span");
+        timeA.textContent = "ABCDEFG";
+        ytpTimeDuration.after(timeA);
+    }
+}
 
 function videoSkip() {
     document.addEventListener('mousedown', function (e) {
