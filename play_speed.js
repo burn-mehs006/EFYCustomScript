@@ -54,7 +54,7 @@ function playSpeed() {
         const player = document.querySelector('video');
         console.log('A wheel playbackRate:', player.playbackRate, " duration:", player.duration, " currentTime:", player.currentTime);
 
-        ytpTimeDurationAtSpeed.textContent = Math.floor(player.duration) / 60 + ":" + Math.floor(player.duration) % 60;
+        ytpTimeDurationAtSpeed.textContent = Math.floor(player.duration / 60) + ":" + Math.floor(player.duration % 60);
         ytpTimeDurationAtSpeed.classList = 'ytp-time-durationAtSpeed';
         ytpTimeBracketBeginAtSpeed.after(ytpTimeDurationAtSpeed);
     }
@@ -69,7 +69,7 @@ function playSpeed() {
         console.log('wheel playbackRate:', player.playbackRate, " duration:", player.duration, " currentTime:", player.currentTime);
 
         const aaa = player.duration / player.playbackRate;
-        ytpTimeDurationAtSpeed.textContent = Math.floor(aaa) / 60 + ":" + Math.floor(aaa) % 60;
+        ytpTimeDurationAtSpeed.textContent = Math.floor(aaa / 60) + ":" + Math.floor(aaa % 60);
     }
 }
 
