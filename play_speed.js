@@ -56,7 +56,7 @@ function playSpeed() {
     }
 
     {
-        
+
         const ytpTimeCurrent = document.querySelector('.ytp-time-current');
         if (ytpTimeCurrent) {
             const observer = new MutationObserver(() => {
@@ -71,7 +71,7 @@ function playSpeed() {
             });
         }
         ytpTimeCurrentAtSpeed.classList = 'ytp-time-CurrentAtSpeed';
-        //const currentTimeAtSpeed = player.currentTime / player.playbackRate;
+        const currentTimeAtSpeed = player.currentTime / player.playbackRate;
         ytpTimeCurrentAtSpeed.textContent = Math.floor(currentTimeAtSpeed / 60) + ":" + Math.floor(currentTimeAtSpeed % 60).toString().padStart(2, '0');
         ytpTimeBracketBeginAtSpeed.after(ytpTimeCurrentAtSpeed);
     }
