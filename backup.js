@@ -37,3 +37,18 @@ const sleep = (time) => new Promise((r) => setTimeout(r, time));
         ytpTimeDuration.after(timeA);
     }
 }());
+
+
+
+// 動作時間をクリックした時のイベントリスナー
+Bn() {
+    this.B = !this.B;
+    this.X4()
+}
+
+var O = g.iP(H);
+this.N !== O && (this.updateValue("currenttime", O), this.N = O);
+r = nf(this) ? (this.Hl.endTimeMs - this.Hl.startTimeMs) / 1E3 : this.api.getDurationForUx({
+    playerType: r,
+    Ye: !1
+});
