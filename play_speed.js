@@ -52,6 +52,8 @@ function playSpeed() {
 
     {
         const player = document.querySelector('video');
+        console.log('A wheel playbackRate:', player.playbackRate, " duration:", player.duration, " currentTime:", player.currentTime);
+
         ytpTimeDurationAtSpeed.textContent = Math.floor(player.duration) / 60 + ":" + Math.floor(player.duration) % 60;
         ytpTimeDurationAtSpeed.classList = 'ytp-time-durationAtSpeed';
         ytpTimeBracketBeginAtSpeed.after(ytpTimeDurationAtSpeed);
