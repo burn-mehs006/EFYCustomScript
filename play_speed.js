@@ -63,9 +63,9 @@ function playSpeed() {
             });
 
             observer.observe(ytpTimeCurrent, {
-                childList: false,
+                childList: true,
                 characterData: true,
-                subtree: false
+                subtree: true
             });
         }
     }
