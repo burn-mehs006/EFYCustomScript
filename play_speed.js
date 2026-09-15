@@ -50,13 +50,27 @@ function playSpeed() {
 
     ytpTimeBracketBeginAtSpeed.textContent = '(';
     ytpTimeBracketBeginAtSpeed.classList = 'ytp-time-bracketBeginAtSpeed';
+
     ytpTimeDuration.after(ytpTimeBracketBeginAtSpeed);
 
     {
-        // const player = document.querySelector('video');
-        // console.log('A wheel playbackRate:', player.playbackRate, " duration:", player.duration, " currentTime:", player.currentTime);
-        //ytpTimeDurationAtSpeed.textContent = Math.floor(player.duration / 60) + ":" + Math.floor(player.duration % 60);
+        const ytpTimeCurrent = document.querySelector('.ytp-time-current');
 
+        if (ytpTimeCurrent) {
+            const observer = new MutationObserver(() => {
+                console.log('総再生時間が変更されました:', ytpTimeCurrent.textContent);
+                // ここで ytpTimeDurationAdjusted を再計算するなど
+            });
+
+            observer.observe(ytpTimeCurrent, {
+                childList: false,
+                characterData: true,
+                subtree: false
+            });
+        }
+    }
+
+    {
         ytpTimeDurationAtSpeed.textContent = document.querySelector('span.ytp-time-duration').textContent;
         ytpTimeDurationAtSpeed.classList = 'ytp-time-durationAtSpeed';
         ytpTimeBracketBeginAtSpeed.after(ytpTimeDurationAtSpeed);
@@ -65,6 +79,7 @@ function playSpeed() {
     ytpTimeBracketEndAtSpeed.textContent = ')';
     ytpTimeBracketEndAtSpeed.classList = 'ytp-time-bracketEndAtSpeed';
     ytpTimeDurationAtSpeed.after(ytpTimeBracketEndAtSpeed);
+
 
     function speedWheel() {
         //const video = document.querySelector("#movie_player > div.html5-video-container > video");
