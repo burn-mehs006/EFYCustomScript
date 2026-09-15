@@ -31,6 +31,7 @@ function playSpeed() {
     d.addEventListener("wheel", speedWheel, true);
     d.addEventListener("click", speedClick);
 
+    const player = document.querySelector('video');
     // element span / class name
     // ytp-time-current
     // ytp-time-separator
@@ -49,16 +50,16 @@ function playSpeed() {
     const ytpTimeBracketEndAtSpeed = document.createElement("span");
 
     {
-        ytpTimeBracketBeginAtSpeed.textContent = '(';
+        ytpTimeBracketBeginAtSpeed.textContent = '　(';
         ytpTimeBracketBeginAtSpeed.classList = 'ytp-time-bracketBeginAtSpeed';
         ytpTimeDuration.after(ytpTimeBracketBeginAtSpeed);
     }
 
     {
+        
         const ytpTimeCurrent = document.querySelector('.ytp-time-current');
         if (ytpTimeCurrent) {
             const observer = new MutationObserver(() => {
-                const player = document.querySelector('video');
                 const currentTimeAtSpeed = player.currentTime / player.playbackRate;
                 ytpTimeCurrentAtSpeed.textContent = Math.floor(currentTimeAtSpeed / 60) + ":" + Math.floor(currentTimeAtSpeed % 60).toString().padStart(2, '0');
             });
@@ -70,11 +71,13 @@ function playSpeed() {
             });
         }
         ytpTimeCurrentAtSpeed.classList = 'ytp-time-CurrentAtSpeed';
+        //const currentTimeAtSpeed = player.currentTime / player.playbackRate;
+        ytpTimeCurrentAtSpeed.textContent = Math.floor(currentTimeAtSpeed / 60) + ":" + Math.floor(currentTimeAtSpeed % 60).toString().padStart(2, '0');
         ytpTimeBracketBeginAtSpeed.after(ytpTimeCurrentAtSpeed);
     }
 
     {
-        ytpTimeSeparatorAtSpeed.textContent = '/';
+        ytpTimeSeparatorAtSpeed.textContent = '　/　';
         ytpTimeSeparatorAtSpeed.classList = 'ytp-time-SeparatorAtSpeed';
         ytpTimeCurrentAtSpeed.after(ytpTimeSeparatorAtSpeed);
     }
@@ -92,8 +95,7 @@ function playSpeed() {
     }
 
     function speedWheel() {
-        //const video = document.querySelector("#movie_player > div.html5-video-container > video");
-        const player = document.querySelector('video');
+        //const player = document.querySelector('video');
         console.log('B wheel playbackRate:', player.playbackRate, " duration:", player.duration, " currentTime:", player.currentTime);
 
         const durationAtSpeed = player.duration / player.playbackRate;
@@ -101,7 +103,7 @@ function playSpeed() {
     }
 
     function speedClick() {
-        const player = document.querySelector('video');
+        //const player = document.querySelector('video');
 
         const durationAtSpeed = player.duration / player.playbackRate;
         ytpTimeDurationAtSpeed.textContent = Math.floor(durationAtSpeed / 60) + ":" + Math.floor(durationAtSpeed % 60).toString().padStart(2, '0');
