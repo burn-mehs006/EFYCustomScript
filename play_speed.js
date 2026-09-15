@@ -52,10 +52,11 @@ function playSpeed() {
     ytpTimeDuration.after(ytpTimeBracketBeginAtSpeed);
 
     {
-        const player = document.querySelector('video');
-        console.log('A wheel playbackRate:', player.playbackRate, " duration:", player.duration, " currentTime:", player.currentTime);
+        // const player = document.querySelector('video');
+        // console.log('A wheel playbackRate:', player.playbackRate, " duration:", player.duration, " currentTime:", player.currentTime);
+        //ytpTimeDurationAtSpeed.textContent = Math.floor(player.duration / 60) + ":" + Math.floor(player.duration % 60);
 
-        ytpTimeDurationAtSpeed.textContent = Math.floor(player.duration / 60) + ":" + Math.floor(player.duration % 60);
+        ytpTimeDurationAtSpeed.textContent = document.querySelector('span.ytp-time-duration').textContent;
         ytpTimeDurationAtSpeed.classList = 'ytp-time-durationAtSpeed';
         ytpTimeBracketBeginAtSpeed.after(ytpTimeDurationAtSpeed);
     }
@@ -67,7 +68,7 @@ function playSpeed() {
     function xxx() {
         //const video = document.querySelector("#movie_player > div.html5-video-container > video");
         const player = document.querySelector('video');
-        console.log('wheel playbackRate:', player.playbackRate, " duration:", player.duration, " currentTime:", player.currentTime);
+        console.log('B wheel playbackRate:', player.playbackRate, " duration:", player.duration, " currentTime:", player.currentTime);
 
         const aaa = player.duration / player.playbackRate;
         ytpTimeDurationAtSpeed.textContent = Math.floor(aaa / 60) + ":" + Math.floor(aaa % 60);
