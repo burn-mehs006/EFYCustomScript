@@ -151,5 +151,5 @@ function videoSkip() {
         }
         console.log("e.button:", e.button, " time:", time);
         player.currentTime += time;
-    });
+    }, true);
 }
