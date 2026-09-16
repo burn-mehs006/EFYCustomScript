@@ -28,8 +28,8 @@
 function playSpeed() {
 
     const d = document.querySelector('#player-container.ytd-watch-flexy, #player-container.ytd-watch-grid');
-    d.addEventListener("wheel", speedWheel, true);
-    d.addEventListener("click", speedClick);
+    d.addEventListener("wheel", showTimeAtSpeed, true);
+    d.addEventListener("click", showTimeAtSpeed);
 
     const player = document.querySelector('video');
     // element span / class name
@@ -56,12 +56,12 @@ function playSpeed() {
     }
 
     {
-
         const ytpTimeCurrent = document.querySelector('.ytp-time-current');
         if (ytpTimeCurrent) {
             const observer = new MutationObserver(() => {
-                const currentTimeAtSpeed = player.currentTime / player.playbackRate;
-                ytpTimeCurrentAtSpeed.textContent = Math.floor(currentTimeAtSpeed / 60) + ":" + Math.floor(currentTimeAtSpeed % 60).toString().padStart(2, '0');
+                //const currentTimeAtSpeed = player.currentTime / player.playbackRate;
+                //ytpTimeCurrentAtSpeed.textContent = Math.floor(currentTimeAtSpeed / 60) + ":" + Math.floor(currentTimeAtSpeed % 60).toString().padStart(2, '0');
+                ytpTimeCurrentAtSpeed.textContent = timeFormatter(player.currentTime / player.playbackRate);
             });
 
             observer.observe(ytpTimeCurrent, {
@@ -71,8 +71,9 @@ function playSpeed() {
             });
         }
         ytpTimeCurrentAtSpeed.classList = 'ytp-time-CurrentAtSpeed';
-        const currentTimeAtSpeed = player.currentTime / player.playbackRate;
-        ytpTimeCurrentAtSpeed.textContent = Math.floor(currentTimeAtSpeed / 60) + ":" + Math.floor(currentTimeAtSpeed % 60).toString().padStart(2, '0');
+        //const currentTimeAtSpeed = player.currentTime / player.playbackRate;
+        //ytpTimeCurrentAtSpeed.textContent = Math.floor(currentTimeAtSpeed / 60) + ":" + Math.floor(currentTimeAtSpeed % 60).toString().padStart(2, '0');
+        ytpTimeCurrentAtSpeed.textContent = timeFormatter(player.currentTime / player.playbackRate);
         ytpTimeBracketBeginAtSpeed.after(ytpTimeCurrentAtSpeed);
     }
 
@@ -94,19 +95,24 @@ function playSpeed() {
         ytpTimeDurationAtSpeed.after(ytpTimeBracketEndAtSpeed);
     }
 
-    function speedWheel() {
-        //const player = document.querySelector('video');
+    function showTimeAtSpeed() {
         console.log('B wheel playbackRate:', player.playbackRate, " duration:", player.duration, " currentTime:", player.currentTime);
 
-        const durationAtSpeed = player.duration / player.playbackRate;
-        ytpTimeDurationAtSpeed.textContent = Math.floor(durationAtSpeed / 60) + ":" + Math.floor(durationAtSpeed % 60).toString().padStart(2, '0');
+        //const durationAtSpeed = player.duration / player.playbackRate;
+        //ytpTimeDurationAtSpeed.textContent = Math.floor(durationAtSpeed / 60) + ":" + Math.floor(durationAtSpeed % 60).toString().padStart(2, '0');
+        ytpTimeDurationAtSpeed.textContent = timeFormatter(player.duration / player.playbackRate);
     }
 
-    function speedClick() {
-        //const player = document.querySelector('video');
+    // function speedClick() {
+    //     const durationAtSpeed = player.duration / player.playbackRate;
+    //     //ytpTimeDurationAtSpeed.textContent = Math.floor(durationAtSpeed / 60) + ":" + Math.floor(durationAtSpeed % 60).toString().padStart(2, '0');
+    //     ytpTimeDurationAtSpeed.textContent = timeFormatter(durationAtSpeed);
+    // }
 
-        const durationAtSpeed = player.duration / player.playbackRate;
-        ytpTimeDurationAtSpeed.textContent = Math.floor(durationAtSpeed / 60) + ":" + Math.floor(durationAtSpeed % 60).toString().padStart(2, '0');
+    const timeFormatter = (seconds) => {
+        let h = Math.floor(seconds / 60);
+        let s = Math.floor(seconds % 60);
+        return h + ':' + s.toString().padStart(2, '0');
     }
 }
 
