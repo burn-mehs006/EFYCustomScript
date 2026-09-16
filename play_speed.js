@@ -74,7 +74,8 @@ function playSpeed() {
             });
         }
         ytpTimeCurrentAtSpeed.classList = 'ytp-time-CurrentAtSpeed';
-        ytpTimeCurrentAtSpeed.textContent = timeFormatter(player.currentTime / player.playbackRate);
+        //ytpTimeCurrentAtSpeed.textContent = timeFormatter(player.currentTime / player.playbackRate);
+        ytpTimeCurrentAtSpeed.textContent = '--';
         ytpTimeBracketBeginAtSpeed.after(ytpTimeCurrentAtSpeed);
     }
 
@@ -88,7 +89,8 @@ function playSpeed() {
     const ytpTimeDurationAtSpeed = document.createElement("span");
     {
         //ytpTimeDurationAtSpeed.textContent = document.querySelector('span.ytp-time-duration').textContent;
-        ytpTimeDurationAtSpeed.textContent = timeFormatter(player.duration / player.playbackRate);
+        //ytpTimeDurationAtSpeed.textContent = timeFormatter(player.duration / player.playbackRate);
+        ytpTimeDurationAtSpeed.textContent = '--';
         ytpTimeDurationAtSpeed.classList = 'ytp-time-durationAtSpeed';
         ytpTimeSeparatorAtSpeed.after(ytpTimeDurationAtSpeed);
     }
@@ -100,7 +102,7 @@ function playSpeed() {
     }
     const ytpTimePercentAtSpeed = document.createElement("span");
     {
-        ytpTimePercentAtSpeed.textContent = '%';
+        ytpTimePercentAtSpeed.textContent = '--';
         ytpTimeInnerBracketBeginAtSpeed.after(ytpTimePercentAtSpeed);
     }
     const ytpTimeinnerBracketEndAtSpeed = document.createElement("span");
@@ -116,11 +118,11 @@ function playSpeed() {
         ytpTimeinnerBracketEndAtSpeed.after(ytpTimeBracketEndAtSpeed);
     }
 
-
     function showTimeAtSpeed() {
         console.log('B wheel playbackRate:', player.playbackRate, " duration:", player.duration, " currentTime:", player.currentTime);
 
         ytpTimeCurrentAtSpeed.textContent = timeFormatter(player.currentTime / player.playbackRate);
+        ytpTimePercentAtSpeed.textContent = Math.floor(player.currentTime / player.duration * 100) + '%';
         ytpTimeDurationAtSpeed.textContent = timeFormatter(player.duration / player.playbackRate);
     }
 
