@@ -46,7 +46,8 @@ function playSpeed() {
 
 
     const timeFormatter = (seconds) => {
-        // 時間までやるかは一旦保留
+        // 時までやるかは一旦保留
+        //const h = Math.floor(seconds / 3600);
         const m = Math.floor(seconds / 60);
         const s = Math.floor(seconds % 60);
         return m + ':' + s.toString().padStart(2, '0');
@@ -80,7 +81,7 @@ function playSpeed() {
 
     const ytpTimeSeparatorAtSpeed = document.createElement("span");
     {
-        ytpTimeSeparatorAtSpeed.textContent = '/';
+        ytpTimeSeparatorAtSpeed.textContent = ' / ';
         ytpTimeSeparatorAtSpeed.classList = 'ytp-time-SeparatorAtSpeed';
         ytpTimeCurrentAtSpeed.after(ytpTimeSeparatorAtSpeed);
     }
@@ -117,7 +118,7 @@ function playSpeed() {
 
     //
     function showTimeAtSpeed() {
-        console.log('B wheel playbackRate:', player.playbackRate, " duration:", player.duration, " currentTime:", player.currentTime);
+        //console.log('B wheel playbackRate:', player.playbackRate, " duration:", player.duration, " currentTime:", player.currentTime);
 
         ytpTimeCurrentAtSpeed.textContent = timeFormatter(player.currentTime / player.playbackRate);
         ytpTimePercentAtSpeed.textContent = Math.ceil(player.currentTime / player.duration * 100) + '%';
@@ -129,7 +130,7 @@ function videoSkip() {
     document.addEventListener('mousedown', function (e) {
         const btn = e.target.closest('#efyt-custom-script');
 
-        e.preventDefault();
+        //e.preventDefault();
 
         if (!btn) {
             return;
