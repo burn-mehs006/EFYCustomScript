@@ -25,6 +25,11 @@
     });
 })();
 
+// element span / class name
+// ytp-time-current
+// ytp-time-separator
+// ytp-time-duration
+
 function playSpeed() {
 
     const d = document.querySelector('#player-container.ytd-watch-flexy, #player-container.ytd-watch-grid');
@@ -32,21 +37,19 @@ function playSpeed() {
     d.addEventListener("click", showTimeAtSpeed);
 
     const player = document.querySelector('video');
-    // element span / class name
-    // ytp-time-current
-    // ytp-time-separator
-    // ytp-time-duration
-
-    const timeFormatter = (seconds) => {
-        const h = Math.floor(seconds / 60);
-        const s = Math.floor(seconds % 60);
-        return h + ':' + s.toString().padStart(2, '0');
-    }
 
     const ytpTimeDuration = document.querySelector(".ytp-time-duration");
     if (!ytpTimeDuration) {
         console.error("not found ytpTimeDuration element");
         return;
+    }
+
+
+    const timeFormatter = (seconds) => {
+        // 時間までやるかは一旦保留
+        const m = Math.floor(seconds / 60);
+        const s = Math.floor(seconds % 60);
+        return m + ':' + s.toString().padStart(2, '0');
     }
 
     const ytpTimeBracketBeginAtSpeed = document.createElement("span");
@@ -61,20 +64,16 @@ function playSpeed() {
         const ytpTimeCurrent = document.querySelector('.ytp-time-current');
         if (ytpTimeCurrent) {
             const observer = new MutationObserver(() => {
-                //const currentTimeAtSpeed = player.currentTime / player.playbackRate;
-                //ytpTimeCurrentAtSpeed.textContent = Math.floor(currentTimeAtSpeed / 60) + ":" + Math.floor(currentTimeAtSpeed % 60).toString().padStart(2, '0');
                 ytpTimeCurrentAtSpeed.textContent = timeFormatter(player.currentTime / player.playbackRate);
             });
 
             observer.observe(ytpTimeCurrent, {
                 childList: true,
                 characterData: true,
-                subtree: true
+                subtree: false
             });
         }
         ytpTimeCurrentAtSpeed.classList = 'ytp-time-CurrentAtSpeed';
-        //const currentTimeAtSpeed = player.currentTime / player.playbackRate;
-        //ytpTimeCurrentAtSpeed.textContent = Math.floor(currentTimeAtSpeed / 60) + ":" + Math.floor(currentTimeAtSpeed % 60).toString().padStart(2, '0');
         ytpTimeCurrentAtSpeed.textContent = timeFormatter(player.currentTime / player.playbackRate);
         ytpTimeBracketBeginAtSpeed.after(ytpTimeCurrentAtSpeed);
     }
@@ -88,23 +87,40 @@ function playSpeed() {
 
     const ytpTimeDurationAtSpeed = document.createElement("span");
     {
-        ytpTimeDurationAtSpeed.textContent = document.querySelector('span.ytp-time-duration').textContent;
+        //ytpTimeDurationAtSpeed.textContent = document.querySelector('span.ytp-time-duration').textContent;
+        ytpTimeDurationAtSpeed.textContent = timeFormatter(player.duration / player.playbackRate);
         ytpTimeDurationAtSpeed.classList = 'ytp-time-durationAtSpeed';
         ytpTimeSeparatorAtSpeed.after(ytpTimeDurationAtSpeed);
+    }
+
+    const ytpTimeInnerBracketBeginAtSpeed = document.createElement("span");
+    {
+        ytpTimeInnerBracketBeginAtSpeed.textContent = '[';
+        ytpTimeDurationAtSpeed.after(ytpTimeInnerBracketBeginAtSpeed);
+    }
+    const ytpTimePercentAtSpeed = document.createElement("span");
+    {
+        ytpTimePercentAtSpeed.textContent = '%';
+        ytpTimeInnerBracketBeginAtSpeed.after(ytpTimePercentAtSpeed);
+    }
+    const ytpTimeinnerBracketEndAtSpeed = document.createElement("span");
+    {
+        ytpTimeinnerBracketEndAtSpeed.textContent = ']';
+        ytpTimePercentAtSpeed.after(ytpTimeinnerBracketEndAtSpeed);
     }
 
     const ytpTimeBracketEndAtSpeed = document.createElement("span");
     {
         ytpTimeBracketEndAtSpeed.textContent = ')';
         ytpTimeBracketEndAtSpeed.classList = 'ytp-time-bracketEndAtSpeed';
-        ytpTimeDurationAtSpeed.after(ytpTimeBracketEndAtSpeed);
+        ytpTimeinnerBracketEndAtSpeed.after(ytpTimeBracketEndAtSpeed);
     }
+
 
     function showTimeAtSpeed() {
         console.log('B wheel playbackRate:', player.playbackRate, " duration:", player.duration, " currentTime:", player.currentTime);
 
-        //const durationAtSpeed = player.duration / player.playbackRate;
-        //ytpTimeDurationAtSpeed.textContent = Math.floor(durationAtSpeed / 60) + ":" + Math.floor(durationAtSpeed % 60).toString().padStart(2, '0');
+        ytpTimeCurrentAtSpeed.textContent = timeFormatter(player.currentTime / player.playbackRate);
         ytpTimeDurationAtSpeed.textContent = timeFormatter(player.duration / player.playbackRate);
     }
 
