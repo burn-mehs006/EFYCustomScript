@@ -64,7 +64,8 @@ function playSpeed() {
         const ytpTimeCurrent = document.querySelector('.ytp-time-current');
         if (ytpTimeCurrent) {
             const observer = new MutationObserver(() => {
-                ytpTimeCurrentAtSpeed.textContent = timeFormatter(player.currentTime / player.playbackRate);
+                //ytpTimeCurrentAtSpeed.textContent = timeFormatter(player.currentTime / player.playbackRate);
+                showTimeAtSpeed();
             });
 
             observer.observe(ytpTimeCurrent, {
