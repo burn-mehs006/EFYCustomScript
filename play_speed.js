@@ -74,7 +74,6 @@ function playSpeed() {
             });
         }
         ytpTimeCurrentAtSpeed.classList = 'ytp-time-CurrentAtSpeed';
-        //ytpTimeCurrentAtSpeed.textContent = timeFormatter(player.currentTime / player.playbackRate);
         ytpTimeCurrentAtSpeed.textContent = '--';
         ytpTimeBracketBeginAtSpeed.after(ytpTimeCurrentAtSpeed);
     }
@@ -88,8 +87,6 @@ function playSpeed() {
 
     const ytpTimeDurationAtSpeed = document.createElement("span");
     {
-        //ytpTimeDurationAtSpeed.textContent = document.querySelector('span.ytp-time-duration').textContent;
-        //ytpTimeDurationAtSpeed.textContent = timeFormatter(player.duration / player.playbackRate);
         ytpTimeDurationAtSpeed.textContent = '--';
         ytpTimeDurationAtSpeed.classList = 'ytp-time-durationAtSpeed';
         ytpTimeSeparatorAtSpeed.after(ytpTimeDurationAtSpeed);
@@ -125,17 +122,14 @@ function playSpeed() {
         ytpTimePercentAtSpeed.textContent = Math.floor(player.currentTime / player.duration * 100) + '%';
         ytpTimeDurationAtSpeed.textContent = timeFormatter(player.duration / player.playbackRate);
     }
-
-    // function speedClick() {
-    //     const durationAtSpeed = player.duration / player.playbackRate;
-    //     //ytpTimeDurationAtSpeed.textContent = Math.floor(durationAtSpeed / 60) + ":" + Math.floor(durationAtSpeed % 60).toString().padStart(2, '0');
-    //     ytpTimeDurationAtSpeed.textContent = timeFormatter(durationAtSpeed);
-    // }
 }
 
 function videoSkip() {
     document.addEventListener('mousedown', function (e) {
         const btn = e.target.closest('#efyt-custom-script');
+
+        e.preventDefault();
+
         if (!btn) {
             return;
         }
