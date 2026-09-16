@@ -37,6 +37,12 @@ function playSpeed() {
     // ytp-time-separator
     // ytp-time-duration
 
+    const timeFormatter = (seconds) => {
+        const h = Math.floor(seconds / 60);
+        const s = Math.floor(seconds % 60);
+        return h + ':' + s.toString().padStart(2, '0');
+    }
+
     const ytpTimeDuration = document.querySelector(".ytp-time-duration");
     if (!ytpTimeDuration) {
         console.error("not found ytpTimeDuration element");
@@ -44,17 +50,13 @@ function playSpeed() {
     }
 
     const ytpTimeBracketBeginAtSpeed = document.createElement("span");
-    const ytpTimeCurrentAtSpeed = document.createElement("span");
-    const ytpTimeSeparatorAtSpeed = document.createElement("span");
-    const ytpTimeDurationAtSpeed = document.createElement("span");
-    const ytpTimeBracketEndAtSpeed = document.createElement("span");
-
     {
         ytpTimeBracketBeginAtSpeed.textContent = ' (';
         ytpTimeBracketBeginAtSpeed.classList = 'ytp-time-bracketBeginAtSpeed';
         ytpTimeDuration.after(ytpTimeBracketBeginAtSpeed);
     }
 
+    const ytpTimeCurrentAtSpeed = document.createElement("span");
     {
         const ytpTimeCurrent = document.querySelector('.ytp-time-current');
         if (ytpTimeCurrent) {
@@ -77,18 +79,21 @@ function playSpeed() {
         ytpTimeBracketBeginAtSpeed.after(ytpTimeCurrentAtSpeed);
     }
 
+    const ytpTimeSeparatorAtSpeed = document.createElement("span");
     {
         ytpTimeSeparatorAtSpeed.textContent = '/';
         ytpTimeSeparatorAtSpeed.classList = 'ytp-time-SeparatorAtSpeed';
         ytpTimeCurrentAtSpeed.after(ytpTimeSeparatorAtSpeed);
     }
 
+    const ytpTimeDurationAtSpeed = document.createElement("span");
     {
         ytpTimeDurationAtSpeed.textContent = document.querySelector('span.ytp-time-duration').textContent;
         ytpTimeDurationAtSpeed.classList = 'ytp-time-durationAtSpeed';
         ytpTimeSeparatorAtSpeed.after(ytpTimeDurationAtSpeed);
     }
 
+    const ytpTimeBracketEndAtSpeed = document.createElement("span");
     {
         ytpTimeBracketEndAtSpeed.textContent = ')';
         ytpTimeBracketEndAtSpeed.classList = 'ytp-time-bracketEndAtSpeed';
@@ -108,12 +113,6 @@ function playSpeed() {
     //     //ytpTimeDurationAtSpeed.textContent = Math.floor(durationAtSpeed / 60) + ":" + Math.floor(durationAtSpeed % 60).toString().padStart(2, '0');
     //     ytpTimeDurationAtSpeed.textContent = timeFormatter(durationAtSpeed);
     // }
-
-    const timeFormatter = (seconds) => {
-        let h = Math.floor(seconds / 60);
-        let s = Math.floor(seconds % 60);
-        return h + ':' + s.toString().padStart(2, '0');
-    }
 }
 
 function videoSkip() {
