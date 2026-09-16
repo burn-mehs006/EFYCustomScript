@@ -94,7 +94,7 @@ function playSpeed() {
 
     const ytpTimeInnerBracketBeginAtSpeed = document.createElement("span");
     {
-        ytpTimeInnerBracketBeginAtSpeed.textContent = '[';
+        ytpTimeInnerBracketBeginAtSpeed.textContent = ' [';
         ytpTimeDurationAtSpeed.after(ytpTimeInnerBracketBeginAtSpeed);
     }
     const ytpTimePercentAtSpeed = document.createElement("span");
@@ -115,11 +115,12 @@ function playSpeed() {
         ytpTimeinnerBracketEndAtSpeed.after(ytpTimeBracketEndAtSpeed);
     }
 
+    //
     function showTimeAtSpeed() {
         console.log('B wheel playbackRate:', player.playbackRate, " duration:", player.duration, " currentTime:", player.currentTime);
 
         ytpTimeCurrentAtSpeed.textContent = timeFormatter(player.currentTime / player.playbackRate);
-        ytpTimePercentAtSpeed.textContent = Math.floor(player.currentTime / player.duration * 100) + '%';
+        ytpTimePercentAtSpeed.textContent = Math.ceil(player.currentTime / player.duration * 100) + '%';
         ytpTimeDurationAtSpeed.textContent = timeFormatter(player.duration / player.playbackRate);
     }
 }
