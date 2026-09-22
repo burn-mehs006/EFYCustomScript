@@ -153,7 +153,7 @@ function videoSkip() {
         fastForward.textContent = '>';
         fastForward.type = 'button';
         fastForward.style.width = '50px';
-        fastForward.style.background = "rgba(255, 255, 255, 0.5)";
+        fastForward.style.background = "rgba(255, 255, 255, 0.3)";
         fastForward.style.borderRadius = "10px";
 
 
@@ -168,7 +168,7 @@ function videoSkip() {
         rewind.textContent = '<';
         rewind.type = 'button';
         rewind.style.width = '50px';
-        rewind.style.background = "rgba(255, 255, 255, 0.5)";
+        rewind.style.background = "rgba(255, 255, 255, 0.3)";
         rewind.style.borderRadius = "10px";
 
         rewind.addEventListener('click', function (e) {
