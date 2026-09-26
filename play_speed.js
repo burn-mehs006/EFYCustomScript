@@ -155,7 +155,8 @@ function videoSkip() {
         fastForward.style.width = '50px';
         fastForward.style.background = "rgba(255, 255, 255, 0.3)";
         fastForward.style.borderRadius = "10px";
-
+        fastForward.style.fontSize = "16px";
+        fastForward.style.color = "rgb(255, 255, 255)";
 
         fastForward.addEventListener('click', function (e) {
             moveProgress(5);
@@ -170,6 +171,8 @@ function videoSkip() {
         rewind.style.width = '50px';
         rewind.style.background = "rgba(255, 255, 255, 0.3)";
         rewind.style.borderRadius = "10px";
+        rewind.style.fontSize = "16px";
+        rewind.style.color = "rgb(255, 255, 255)";
 
         rewind.addEventListener('click', function (e) {
             moveProgress(-5);
