@@ -158,6 +158,7 @@ function videoSkip() {
         fastForward.style.fontSize = "24px";
         //fastForward.style.color = "rgb(255, 255, 255)";
         fastForward.style.textAlign = "center"
+        fastForward.style.margin = "2px";
         fastForward.classList.add("ytp-button");
         fastForward.classList.add("ytp-autohide-fade-transition");
         fastForward.classList.add("ytp-efyt-button");
@@ -179,6 +180,7 @@ function videoSkip() {
         //rewind.style.color = "rgb(255, 255, 255)";
         //ytp-button ytp-autohide-fade-transition ytp-efyt-button
         rewind.style.textAlign = "center"
+        rewind.style.margin = "2px";
         rewind.classList.add("ytp-button");
         rewind.classList.add("ytp-autohide-fade-transition");
         rewind.classList.add("ytp-efyt-button");
