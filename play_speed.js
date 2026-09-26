@@ -153,6 +153,14 @@ function videoSkip() {
         fastForward.textContent = '>';
         fastForward.type = 'button';
         fastForward.style.width = '50px';
+        fastForward.style.background = "rgba(0, 0, 0, 0.3)";
+        fastForward.style.borderRadius = "10px";
+        fastForward.style.fontSize = "36px";
+        fastForward.style.textAlign = "center"
+        fastForward.style.margin = "2px";
+        fastForward.classList.add("ytp-button");
+        fastForward.classList.add("ytp-autohide-fade-transition");
+        fastForward.classList.add("ytp-efyt-button");
 
         fastForward.addEventListener('click', function (e) {
             moveProgress(5);
@@ -165,6 +173,14 @@ function videoSkip() {
         rewind.textContent = '<';
         rewind.type = 'button';
         rewind.style.width = '50px';
+        rewind.style.background = "rgba(0, 0, 0, 0.3)";
+        rewind.style.borderRadius = "10px";
+        rewind.style.fontSize = "36px";
+        rewind.style.textAlign = "center"
+        rewind.style.margin = "2px";
+        rewind.classList.add("ytp-button");
+        rewind.classList.add("ytp-autohide-fade-transition");
+        rewind.classList.add("ytp-efyt-button");
 
         rewind.addEventListener('click', function (e) {
             moveProgress(-5);
