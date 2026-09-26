@@ -153,9 +153,9 @@ function videoSkip() {
         fastForward.textContent = '>';
         fastForward.type = 'button';
         fastForward.style.width = '50px';
-        fastForward.style.background = "rgba(255, 255, 255, 0.3)";
+        fastForward.style.background = "rgba(0, 0, 0, 0.3)";
         fastForward.style.borderRadius = "10px";
-        fastForward.style.fontSize = "24px";
+        fastForward.style.fontSize = "30px";
         //fastForward.style.color = "rgb(255, 255, 255)";
         fastForward.style.textAlign = "center"
         fastForward.style.margin = "2px";
@@ -174,9 +174,9 @@ function videoSkip() {
         rewind.textContent = '<';
         rewind.type = 'button';
         rewind.style.width = '50px';
-        rewind.style.background = "rgba(255, 255, 255, 0.3)";
+        rewind.style.background = "rgba(0, 0, 0, 0.3)";
         rewind.style.borderRadius = "10px";
-        rewind.style.fontSize = "24px";
+        rewind.style.fontSize = "30px";
         //rewind.style.color = "rgb(255, 255, 255)";
         //ytp-button ytp-autohide-fade-transition ytp-efyt-button
         rewind.style.textAlign = "center"
