@@ -140,8 +140,7 @@ function playSpeed() {
         }
 
         // パーセント表示
-        console.log('currentTime:', player.currentTime, ' duration:', player.duration, ' persent:', Math.floor(player.currentTime / player.duration * 100));
-        ytpTimePercentAtSpeed.textContent = Math.floor(player.currentTime / player.duration * 100) + '%';
+        ytpTimePercentAtSpeed.textContent = Math.floor(Math.floor(player.currentTime) / Math.floor(player.duration * 100)) + '%';
     }
 }
 
